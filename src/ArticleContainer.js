@@ -28,6 +28,7 @@ class ArticleContainer extends Component {
     }
     shouldComponentUpdate (nextProps,nextState) {
         console.log("shouldComponentUpdate");
+        return true;
     }
     componentWillUpdate (nextProps,nextState) {
         console.log("componentWillUpdate");
@@ -53,7 +54,7 @@ class ArticleContainer extends Component {
                         this.setState({
                             overflow: 'visible'
                         })
-                    }}>
+                    }}>full
                     </div>
                 </div>
                 {
