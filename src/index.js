@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import ArticleContainer from './ArticleContainer';
 import registerServiceWorker from './registerServiceWorker';
+import data from './data';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<ArticleContainer articles={data.content}/>, document.getElementById('root'));
 registerServiceWorker();
