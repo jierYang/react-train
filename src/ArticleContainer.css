@@ -5,3 +5,18 @@
 .hrefOverflow{
   text-decoration:underline
 }
+
+
+.App{
+  width: 300px;
+
+}
+
+/*.autoOverflow{*/
+  /*float: left;*/
+/*}*/
+
+
+.chooseFlow{
+  text-decoration:underline
+}

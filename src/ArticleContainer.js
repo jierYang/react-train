@@ -1,27 +1,30 @@
 import React, {Component} from 'react';
 import './ArticleContainer.css';
 import ArticleContent from './ArticleContent';
+import ReadMore from './ReadMore';
 
 class ArticleContainer extends Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     overflow: 'auto'
-        // }
+
         this.getInitialState();
     }
 
     getInitialState(){
         this.state = {
-            overflow: 'auto'
+            overflow: 'auto',
+            displayReadMore: false
         }
     }
 
     componentWillMount () {
-        console.log("componentWillMount");
     }
     componentDidMount () {
-        console.log("componentDidMount");
+        if(this.componentRef && this.componentRef.clientHeight < this.componentRef.scrollHeight){
+            this.setState({
+                displayReadMore: true
+            })
+        }
     }
     componentWillReceiveProps (nextProps) {
         console.log("componentWillReceiveProps");
@@ -41,16 +44,16 @@ class ArticleContainer extends Component {
     render() {
         const style = {fontSize: 32, color: '#8ca5e3', overflow: this.state.overflow};
         return (
-            <div className="App" style={style}>
-                <div>
-                    <div clss="hrefOverflow" onClick={() => {
+            <div className="App" style={style} ref={(ref) => this.componentRef = ref}>
+                <div claassName = "chooseFlow">
+                    <div className="autoOverflow" onClick={() => {
                         this.setState({
                             overflow: 'auto'
                         })
                     }}>scroll
                     </div>
 
-                    <div clss="hrefOverflow" onClick={() => {
+                    <div className="visibleOverflow" onClick={() => {
                         this.setState({
                             overflow: 'visible'
                         })
@@ -65,6 +68,8 @@ class ArticleContainer extends Component {
                     })
 
                 }
+
+                { this.state.displayReadMore && <ReadMore /> }
             </div>
         );
     }
